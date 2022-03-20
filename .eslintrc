@@ -1,0 +1,22 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "semi": [
+            "error",
+            "never"
+        ],
+        "quotes": [
+            2,
+            "single"
+        ],
+        "indent": [
+            "error",
+            2
+        ],
+        "eqeqeq": "error",
+        "curly": "error"
+    }
+}
