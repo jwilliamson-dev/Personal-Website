@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button, Box, Grid } from '@mui/material'
+import { Button, Box, Grid, Link } from '@mui/material'
 
 type Props = {};
 
-const Header = (props: Props) => {
+const Header: React.FC = (props: Props) => {
   return (
     <Grid container
       sx={{
@@ -18,7 +18,7 @@ const Header = (props: Props) => {
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-        <Box>Jacob Williamson</Box>
+        <Link variant="h4"color="inherit" underline="none" href="/">Jacob Williamson</Link>
         <Box>
           <Button variant="text" color="secondary" href="/About">About</Button>
           <Button variant="text" color="secondary" href="/Resume">Resume</Button>
