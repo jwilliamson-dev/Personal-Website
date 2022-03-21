@@ -1,0 +1,40 @@
+.d-flex {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.icon {
+    font-size: 1.8rem !important;
+    margin-left: 1rem;
+    align-self: center;
+    color: #062630;
+    -webkit-transition: color 200ms linear;
+    -ms-transition: color 200ms linear;
+    -moz-transition: color 200ms linear;
+    transition: color 200ms linear;
+}
+
+.icon:hover {
+    color: #F0FFFF;
+    -webkit-transition: color 200ms linear;
+    -ms-transition: color 200ms linear;
+    -moz-transition: color 200ms linear;
+    transition: color 200ms linear;
+}
+
+.banner-outer {
+    justify-content: center;
+    min-height: 3rem;
+}
+
+.banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+}
