@@ -1,15 +1,24 @@
 import React from 'react'
-import { Box, Typography as Typ, Link} from '@mui/material'
+import { Box, Typography as Typ, Link, styled} from '@mui/material'
 import { FeedItem, IFeedItem } from './FeedItem'
 import { GitHubActivity } from '../types'
-import '../styles/ActivityFeed.css'
-import '../styles/utility.css'
 
 
 interface IActivityFeed {
   title: string,
   items: Array<GitHubActivity>
 }
+
+const AFBox = styled(Box)`
+  text-align: left;
+  background-color: #FFFFFF;
+
+  h2 {
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+`
 
 const ActivityFeed: React.FC<IActivityFeed> = ({
   title,
@@ -25,7 +34,14 @@ const ActivityFeed: React.FC<IActivityFeed> = ({
       <ul>
         {item.payload.commits.map(x => 
           <li key={(key++).toString()}>
-            <Link color='inherit' href={`https://github.com/${item.repo.name}/commit/${x.sha}`} target='_blank' rel='noopener noreferrer'>{x.sha.slice(0,8)}</Link> - {x.message}
+            <Typ variant='body1'>
+              <Link color='inherit' 
+                href={`https://github.com/${item.repo.name}/commit/${x.sha}`} 
+                target='_blank' 
+                rel='noopener noreferrer'>
+                {x.sha.slice(0,8)}
+              </Link> - {x.message}
+            </Typ>
           </li>)}
       </ul>
     </>
@@ -39,10 +55,10 @@ const ActivityFeed: React.FC<IActivityFeed> = ({
   }
 
   return (
-    <Box className='ActivityFeed'>
-      <Typ variant='h2' className='bg-white'>{title}</Typ>
+    <AFBox>
+      <Typ variant='h2'>{title}</Typ>
       { items.map(x => <FeedItem {...generateIFeedItem(x)} key={(key++).toString()} />) }
-    </Box>
+    </AFBox>
   )
 }
 

@@ -1,12 +1,14 @@
 import React from 'react'
-import { Button, Box, Grid, Link } from '@mui/material'
+import { Button, Box, Link } from '@mui/material'
+import { OBanner, IBanner } from '../styles/BannerStyles'
+
 
 type Props = {};
 
 const Header: React.FC = (props: Props) => {
   return (
-    <Grid container className='banner-outer' sx={{ bgcolor: 'primary.main', boxShadow: 3 }}>
-      <Grid item sm={11} md={10} className='banner-inner'>
+    <OBanner container sx={{ boxShadow: 3 }}>
+      <IBanner item sm={11} md={10}>
         <Link variant='h4'color='inherit' underline='none' href='/'>Jacob Williamson</Link>
         <Box>
           <Button variant='text' color='secondary' href='/About'>About</Button>
@@ -14,8 +16,8 @@ const Header: React.FC = (props: Props) => {
           <Button variant='text' color='secondary' href='/Projects'>Projects</Button>
           <Button disabled variant='text' href='/Blog'>Blog</Button>
         </Box>
-      </Grid>
-    </Grid>
+      </IBanner>
+    </OBanner>
   )
 }
 

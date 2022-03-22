@@ -13,7 +13,8 @@ const theme: ThemeOptions = {
     },
     h2: {
       fontSize: '1.8rem',
-      margins: 'none'
+      margins: 'none',
+      fontWeight: 'normal'
     },
     h3: {
       fontSize: '1.6rem',

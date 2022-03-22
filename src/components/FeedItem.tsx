@@ -1,8 +1,12 @@
 import React, { ReactElement } from 'react'
-import { Card, CardActionArea, Link, Typography as Typ } from '@mui/material'
 import moment from 'moment'
-import '../styles/utility.css'
-import '../styles/ActivityFeed.css'
+import { 
+  Card, 
+  CardActionArea, 
+  Link,
+  styled,
+  Typography as Typ 
+} from '@mui/material'
 
 interface IFeedItem {
   title: string,
@@ -10,6 +14,16 @@ interface IFeedItem {
   date: Date,
   url: string
 }
+
+const AFCardActionArea  = styled(CardActionArea)`
+    padding-top: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+`
+
+const AFTyp = styled(Typ)`
+  padding-bottom: 0.5rem;
+`
 
 const FeedItem: React.FC<IFeedItem> = ({
   title,
@@ -21,11 +35,13 @@ const FeedItem: React.FC<IFeedItem> = ({
 
   return (
     <Card sx={{borderRadius: 0}}>
-      <CardActionArea href={url} target='_blank' rel='noopener noreferrer' className='FeedItem'>
-        <Typ variant='h5' className='p-b-1'>{title}</Typ>
-        {description}
-        <Typ variant='body1'>{formatDate(date)}</Typ>
-      </CardActionArea>
+      <AFCardActionArea>
+        <Link color='inherit' variant='inherit' underline='none' href={url} target='_blank' rel='noopener noreferrer'>
+          <AFTyp variant='h5'>{title}</AFTyp>
+          {description}
+          <AFTyp variant='body1'>{formatDate(date)}</AFTyp>
+        </Link>
+      </AFCardActionArea>
     </Card>
   )
 }

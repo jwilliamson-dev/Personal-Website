@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import { Grid, Box } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import {
   Home,
   About,
@@ -10,13 +10,24 @@ import {
   Projects,
   NoPage
 } from './pages'
-import './styles/utility.css'
+
+const Main = styled(Box)`
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  max-width: 100vw;
+  text-align: center;
+`
+
+const Content = styled(Box)`
+  flex-grow: 1;
+`
 
 function App() {
   return (
-    <Box className='App'>
+    <Main>
       <Header />
-      <Box className='Content'>
+      <Content>
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
@@ -26,9 +37,9 @@ function App() {
             <Route path='*' element={<NoPage />} />
           </Routes>
         </BrowserRouter>
-      </Box>
+      </Content>
       <Footer />
-    </Box>
+    </Main>
   )
 }
 

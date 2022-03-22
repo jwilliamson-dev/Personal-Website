@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Typography as Typ } from '@mui/material'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
+import { styled } from '@mui/material'
 import ActivityFeed from '../components/ActivityFeed'
 import { GitHubActivity } from '../types'
 
 type Props = {}
+
+const AFGrid = styled(Grid)`
+  max-height: 65vh;
+  overflow: auto;
+  margin-bottom: .5rem;
+`
 
 const Home: React.FC = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -34,15 +41,15 @@ const Home: React.FC = (props: Props) => {
         <Typ variant='h1'>Hi, I'm Jacob!</Typ>
         <Typ variant='body2'>I enjoy using technology to make things happen</Typ>
       </Grid>
-      <Grid item sm={11} md={4} className='feed'>
+      <AFGrid item xs={10} md={5} lg={4}>
         <ActivityFeed title='My GitHub Feed' items={gitHubData}/>
-      </Grid>
-      <Grid item sm={11} md={4} className='feed'>
+      </AFGrid>
+      <AFGrid item xs={10} md={5} lg={4}>
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="jwilliamson_dev"
         ></TwitterTimelineEmbed>
-      </Grid>
+      </AFGrid>
     </Grid>
   )
 }
