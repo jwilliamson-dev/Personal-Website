@@ -9,7 +9,7 @@ type Props = {}
 
 const Footer: React.FC = (props: Props) => {
   return (
-    <Grid container className='banner-outer bottom' sx={{ bgcolor: 'primary.main' }}>
+    <Grid container className='banner-outer' sx={{ bgcolor: 'primary.main' }}>
       <Grid item sm={11} md={10} className='banner-inner'>
         <Typography variant='body1'>
           &copy; Copyright {(new Date()).getFullYear()} - Jacob Williamson, Powered by&nbsp;

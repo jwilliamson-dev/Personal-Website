@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import { Grid, Box } from '@mui/material'
 import {
   Home,
   About,
@@ -10,24 +10,25 @@ import {
   Projects,
   NoPage
 } from './pages'
+import './styles/utility.css'
 
 function App() {
   return (
-    <div className="App">
+    <Box className='App'>
       <Header />
-
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='About' element={<About />} />
-          <Route path='Resume' element={<Resume />} />
-          <Route path='Projects' element={<Projects />} />
-          <Route path='*' element={<NoPage />} />
-        </Routes>
-      </BrowserRouter>
-
+      <Box className='Content'>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='About' element={<About />} />
+            <Route path='Resume' element={<Resume />} />
+            <Route path='Projects' element={<Projects />} />
+            <Route path='*' element={<NoPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   )
 }
 

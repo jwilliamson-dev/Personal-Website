@@ -1,0 +1,1 @@
+export type { GitHubActivity, Commit } from './GithubActivity'

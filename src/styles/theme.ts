@@ -8,7 +8,7 @@ const theme: ThemeOptions = {
       'sans-serif'
     ].join(','),
     h1: {
-      fontSize: '2rem',
+      fontSize: '3.5rem',
       margins: 'none'
     },
     h2: {
@@ -34,6 +34,10 @@ const theme: ThemeOptions = {
       margins: 'none',
       fontWeight: 'bold'
     },
+    body2: {
+      marginBottom: '1rem',
+      fontSize: '1rem'
+    }
   },
   palette: {
     primary: {
