@@ -3,7 +3,7 @@ import { Typography as Typ, Link, Box } from '@mui/material'
 
 type Props = {}
 
-const NoPage = (props: Props) => {
+const NoPage: React.FC = (props: Props) => {
   return (
     <Box mt={3}>
       <Typ variant='h1'>Uh oh!</Typ>

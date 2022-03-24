@@ -13,6 +13,11 @@ const AFGrid = styled(Grid)`
   margin-bottom: .5rem;
 `
 
+const Hello = styled(Typ)`
+  font-size: 3.5rem;
+  font-weight: 300;
+`
+
 const Home: React.FC = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [gitHubData, setGitHubData] = useState<Array<GitHubActivity>>([])
@@ -22,7 +27,7 @@ const Home: React.FC = (props: Props) => {
       setIsLoading(true)
 
       try {
-        const res = await fetch('/testdata/githubactivity.json')
+        const res = await fetch('/data/githubactivity.json')
         const jsonData: Array<GitHubActivity> = await res.json()
         setGitHubData(jsonData)
       } catch (error) {
@@ -38,7 +43,7 @@ const Home: React.FC = (props: Props) => {
   return (
     <Grid container mt={1} justifyContent='center' height='100%' columnSpacing={3}>
       <Grid item sm={11} md={10} height='fit-content'>
-        <Typ variant='h1'>Hi, I'm Jacob!</Typ>
+        <Hello>Hi, I'm Jacob!</Hello>
         <Typ variant='body2'>I enjoy using technology to make things happen</Typ>
       </Grid>
       <AFGrid item xs={10} md={5} lg={4}>

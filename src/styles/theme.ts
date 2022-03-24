@@ -8,32 +8,34 @@ const theme: ThemeOptions = {
       'sans-serif'
     ].join(','),
     h1: {
-      fontSize: '3.5rem',
-      margins: 'none'
+      fontSize: '2.5rem',
+      fontWeight: 500,
+      marginBottom: '0.5rem'
     },
     h2: {
-      fontSize: '1.8rem',
-      margins: 'none',
-      fontWeight: 'normal'
+      fontSize: '2rem',
+      fontWeight: '500',
+      marginBottom: '.5rem'
     },
     h3: {
       fontSize: '1.6rem',
-      margins: 'none',
-      color: 'InfoText'
+      fontWeight: '500',
+      marginBottom: '.5rem'
     },
     h4: {
       fontSize: '1.4rem',
-      margins: 'none',
-      color: '#000000'
+      fontWeight: '500',
+      marginBottom: '.5rem'
     },
     h5: {
       fontSize: '1.2rem',
-      margins: 'none'
+      fontWeight: '500',
+      marginBottom: '.5rem'
     },
     h6: {
       fontSize: '1rem',
-      margins: 'none',
-      fontWeight: 'bold'
+      fontWeight: '500',
+      marginBottom: '.5rem'
     },
     body2: {
       marginBottom: '1rem',

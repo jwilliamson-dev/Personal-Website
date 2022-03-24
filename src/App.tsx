@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Box, styled } from '@mui/material'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import { Box, styled } from '@mui/material'
 import {
   Home,
   About,
