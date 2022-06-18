@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import moment from 'moment'
+import { openUrl } from '../utils/navigation'
 import { 
   Card, 
   CardActionArea, 
@@ -35,12 +36,10 @@ const FeedItem: React.FC<IFeedItem> = ({
 
   return (
     <Card sx={{borderRadius: 0}}>
-      <AFCardActionArea>
-        <Link color='inherit' variant='inherit' underline='none' href={url} target='_blank' rel='noopener noreferrer'>
-          <AFTyp variant='h5'>{title}</AFTyp>
-          {description}
-          <AFTyp variant='body1'>{formatDate(date)}</AFTyp>
-        </Link>
+      <AFCardActionArea onClick={e => openUrl(e, url)}>
+        <AFTyp variant='h5'>{title}</AFTyp>
+        {description}
+        <AFTyp variant='body1'>{formatDate(date)}</AFTyp>
       </AFCardActionArea>
     </Card>
   )

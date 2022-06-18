@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Typography as Typ, Link, styled} from '@mui/material'
 import { FeedItem, IFeedItem } from './FeedItem'
 import { GitHubActivity } from '../types'
+import { openUrl } from '../utils/navigation'
 
 
 interface IActivityFeed {
@@ -35,10 +36,8 @@ const ActivityFeed: React.FC<IActivityFeed> = ({
         {item.payload.commits.map(x => 
           <li key={(key++).toString()}>
             <Typ variant='body1'>
-              <Link color='inherit' 
-                href={`https://github.com/${item.repo.name}/commit/${x.sha}`} 
-                target='_blank' 
-                rel='noopener noreferrer'>
+              <Link color='inherit'
+                onClick={e => openUrl(e, `https://github.com/${item.repo.name}/commit/${x.sha}`)}>
                 {x.sha.slice(0,8)}
               </Link> - {x.message}
             </Typ>
