@@ -19,9 +19,8 @@ const levelToHeader = new Map<number, HLevel>([
   [6,'h6']
 ])
 
-const AGrid = styled(Grid)`
+const LeftTyp = styled(Typ)`
   text-align: left;
-  margin-top: 1rem;
 `
 
 const Contact = styled(Box)`
@@ -70,12 +69,12 @@ const About: React.FC = (props: Props) => {
     if (section.type === 'list') {
       thisSection = <ul>{section.content.map(x => <li id={(i++).toString()}>{x}</li>)}</ul>
     } else if (section.type === 'paragraph') {
-      thisSection = section.content.map(x => <Typ variant='body2' id={(i++).toString()}>{x}</Typ>)
+      thisSection = section.content.map(x => <LeftTyp variant='body2' id={(i++).toString()}>{x}</LeftTyp>)
     }
 
     return (
       <>
-        <Typ variant={hLevel}>{section.heading}</Typ>
+        <LeftTyp variant={hLevel}>{section.heading}</LeftTyp>
         { thisSection }
         { subsections }
       </>
@@ -83,8 +82,8 @@ const About: React.FC = (props: Props) => {
   }
   
   return (
-    <AGrid container justifyContent='center'>
-      <Grid item lg={8} md={9} sm={10} xs={11}>
+    <>
+      <Grid item lg={9} md={10} xs={11}>
         <ContactBar>
           <Contact>
             <EmailIcon fontSize='medium' /> &nbsp;
@@ -110,7 +109,7 @@ const About: React.FC = (props: Props) => {
           <Typ variant='h1'>Loading Data...</Typ>
         )}
       </Grid>
-    </AGrid>
+    </>
   )
 }
 

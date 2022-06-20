@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Box, styled } from '@mui/material'
+import { Box, Grid, styled } from '@mui/material'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import {
@@ -19,7 +19,7 @@ const Main = styled(Box)`
   text-align: center;
 `
 
-const Content = styled(Box)`
+const Content = styled(Grid)`
   flex-grow: 1;
 `
 
@@ -27,7 +27,7 @@ function App() {
   return (
     <Main>
       <Header />
-      <Content>
+      <Content container mt={2} justifyContent='center' columnSpacing={3} height='100%'>
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />

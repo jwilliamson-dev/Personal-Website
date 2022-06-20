@@ -1,6 +1,6 @@
-import React from 'react'
+import { MouseEvent } from 'react'
 
-export const openUrl = (event: React.MouseEvent, url: string) => {
+export const openUrl = (event: MouseEvent, url: string) => {
   event.preventDefault()
-  window.open(url, '_blank')
+  window.open(url, '_blank', 'noopener,noreferrer')
 }

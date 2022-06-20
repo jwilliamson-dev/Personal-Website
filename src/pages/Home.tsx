@@ -41,13 +41,13 @@ const Home: React.FC = (props: Props) => {
   }, [])
   
   return (
-    <Grid container mt={1} justifyContent='center' height='100%' columnSpacing={3}>
+    <>
       <Grid item sm={11} md={10} height='fit-content'>
         <Hello>Hi, I'm Jacob!</Hello>
         <Typ variant='body2'>I enjoy using technology to make things happen</Typ>
       </Grid>
       <AFGrid item xs={10} md={5} lg={4}>
-        <ActivityFeed title='My GitHub Feed' items={gitHubData}/>
+        <ActivityFeed title='My GitHub Feed' items={gitHubData} />
       </AFGrid>
       <AFGrid item xs={10} md={5} lg={4}>
         <TwitterTimelineEmbed
@@ -55,7 +55,7 @@ const Home: React.FC = (props: Props) => {
           screenName="jwilliamson_dev"
         ></TwitterTimelineEmbed>
       </AFGrid>
-    </Grid>
+    </>
   )
 }
 

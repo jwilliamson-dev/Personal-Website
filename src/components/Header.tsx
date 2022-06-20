@@ -3,7 +3,7 @@ import { Button, Box, Link, styled } from '@mui/material'
 import { OBanner, IBanner } from '../styles/BannerStyles'
 
 
-type Props = {};
+type Props = {}
 
 const NameTag = styled(Link)`
   font-weight: normal;
