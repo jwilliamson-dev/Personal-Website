@@ -1,10 +1,15 @@
 import React from 'react'
-import { Section } from '../types/Document'
-import Education from '../components/Education'
-import Experience from '../components/Experience'
-import Project from '../components/Project'
-import Skill from '../components/Skill'
-import { Grid, Link, styled, Typography as Typ } from '@mui/material'
+import { Section } from 'types/Document'
+import Education from 'components/Education'
+import Experience from 'components/Experience'
+import Project from 'components/Project'
+import Skill from 'components/Skill'
+import { 
+  Grid, 
+  Link, 
+  styled, 
+  Typography as Typ 
+} from '@mui/material'
 
 type Props = {
     header: Section,
@@ -15,16 +20,11 @@ type Props = {
     activities: Section
 }
 
-const CenterTyp = styled(Typ)`
-  text-align: center;
-`
-
-const LeftGrid = styled(Grid)`
-  text-align: left;
+const ResumeGrid = styled(Grid)`
   ul {
     margin-top: 0;
   }
-  h1,h2, h3 {
+  h1, h2, h3 {
     margin-bottom: 0;
   }
   hr {
@@ -53,18 +53,23 @@ const ResumeContent: React.FC<Props> = ({
 
     return (
       <span key={i++}>
-        <Link color='inherit' href={item}>{`${url.hostname}${url.pathname}`}</Link> |&nbsp;
+        <Link color='inherit' 
+          href={item} 
+          target='_blank' 
+          rel='noopener noreferrer'>
+          {`${url.hostname}${url.pathname}`}
+        </Link> |&nbsp;
       </span>
     )
   }
 
   return (
     <>
-      <LeftGrid item lg={9} md={10} xs={11}>
-        <CenterTyp variant='h1'>{header.heading}</CenterTyp>
-        <CenterTyp variant='body1' mb={2}>{header.content
+      <ResumeGrid item lg={9} md={10} xs={11} textAlign='left'>
+        <Typ variant='h1' textAlign='center'>{header.heading}</Typ>
+        <Typ variant='body1' mb={2} textAlign='center'>{header.content
           .map(i => transformLink(i))}
-        </CenterTyp>
+        </Typ>
 
         <Typ variant='h2'>{education.heading}</Typ>
         <hr />
@@ -97,7 +102,7 @@ const ResumeContent: React.FC<Props> = ({
           { activities.content.map(activity => <li key={i++}>{activity}</li>) }
         </ul>
 
-      </LeftGrid>
+      </ResumeGrid>
     </>
   )
 }

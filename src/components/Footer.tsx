@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography as Typ, Box, Link } from '@mui/material'
-import { OBanner, IBanner } from '../styles/BannerStyles'
-import { SGitHubIcon, SLinkedInIcon, STwitterIcon } from '../styles/IconStyles'
+import { OBanner, IBanner } from 'styles/BannerStyles'
+import { SGitHubIcon, SLinkedInIcon, STwitterIcon } from 'styles/IconStyles'
 
 type Props = {}
 

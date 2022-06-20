@@ -1,6 +1,6 @@
 import React from 'react'
-import { Typography as Typ, styled } from '@mui/material'
-import { Section } from '../types/Document'
+import { Typography as Typ } from '@mui/material'
+import { Section } from 'types/Document'
 
 type Props = {
   data: Section

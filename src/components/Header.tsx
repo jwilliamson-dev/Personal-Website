@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Box, Link, styled } from '@mui/material'
-import { OBanner, IBanner } from '../styles/BannerStyles'
+import { OBanner, IBanner } from 'styles/BannerStyles'
 
 
 type Props = {}

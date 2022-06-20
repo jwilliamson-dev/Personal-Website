@@ -1,6 +1,6 @@
-import React, { useState, useEffect, ReactElement } from 'react'
-import { Typography as Typ, Grid } from '@mui/material'
-import { Document } from '../types/Document'
+import React, { useState, useEffect } from 'react'
+import { Typography as Typ } from '@mui/material'
+import { Document } from 'types/Document'
 import ResumeContent from './ResumeContent'
 
 type Props = {}

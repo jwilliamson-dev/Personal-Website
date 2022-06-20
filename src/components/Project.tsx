@@ -1,5 +1,5 @@
 import React from 'react'
-import { Section } from '../types/Document'
+import { Section } from 'types/Document'
 
 type Props = {
   data: Section

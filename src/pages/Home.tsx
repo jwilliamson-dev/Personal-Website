@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Grid, Typography as Typ } from '@mui/material'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import { styled } from '@mui/material'
-import ActivityFeed from '../components/ActivityFeed'
-import { GitHubActivity } from '../types'
+import ActivityFeed from 'components/ActivityFeed'
+import { GitHubActivity } from 'types'
 
 type Props = {}
 

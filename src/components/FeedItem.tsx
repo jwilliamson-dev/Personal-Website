@@ -1,10 +1,9 @@
 import React, { ReactElement } from 'react'
 import moment from 'moment'
-import { openUrl } from '../utils/navigation'
+import { openUrl } from 'utils/navigation'
 import { 
   Card, 
-  CardActionArea, 
-  Link,
+  CardActionArea,
   styled,
   Typography as Typ 
 } from '@mui/material'
