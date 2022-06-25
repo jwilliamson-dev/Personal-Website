@@ -1,34 +1,60 @@
 import React from 'react'
-import { Typography as Typ, Box, Link } from '@mui/material'
-import { OBanner, IBanner } from 'styles/BannerStyles'
-import { SGitHubIcon, SLinkedInIcon, STwitterIcon } from 'styles/IconStyles'
+import * as Icon from 'styles/IconStyles'
+import * as Banner from 'styles/BannerStyles'
+import { 
+  Grid, 
+  Link, 
+  Typography as Typ, 
+  useMediaQuery, 
+  useTheme 
+} from '@mui/material'
 
 type Props = {}
 
 const Footer: React.FC = (props: Props) => {
+  const theme = useTheme()
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+  const linkProperties = { 
+    color: 'inherit', 
+    target: '_blank', 
+    rel: 'noopener noreferrer' 
+  }
+
   return (
-    <OBanner container >
-      <IBanner item sm={11} md={10}>
-        <Typ variant='body1'>
+    <Banner.Outer container>
+      <Banner.Inner container item xs={11} md={10}>
+        <Grid item sm={10}>
+          <Typ variant='body1' textAlign={ isSmall ? 'center' : 'left'}>
           &copy; Copyright {(new Date()).getFullYear()} - Jacob Williamson, Powered by&nbsp;
-          <Link color='inherit' href='https://reactjs.org/' target='_blank' rel='noopener noreferrer'>React</Link> 
+            <Link href='https://reactjs.org/' {...linkProperties}>
+              React
+            </Link> 
           &nbsp;and&nbsp;
-          <Link color='inherit' href='https://mui.com/' target='_blank' rel='noopener noreferrer'>MUI</Link>
+            <Link href='https://mui.com/' {...linkProperties}>
+                MUI
+            </Link>
           , Website v1.0
-        </Typ>
-        <Box display='flex'>
-          <Link href='https://github.com/jwilliamson-dev' target='_blank' rel='noopener noreferrer'>
-            <SGitHubIcon />
+          </Typ>
+        </Grid>
+        <Grid 
+          item
+          xs={6}
+          sm={2} 
+          display='flex'
+          alignItems='center'
+          justifyContent={ isSmall ? 'space-evenly' : 'space-evenly'}>
+          <Link href='https://github.com/jwilliamson-dev' {...linkProperties}>
+            <Icon.GitHub />
           </Link>
-          <Link href='https://www.linkedin.com/in/jjw324' target='_blank' rel='noopener noreferrer'>
-            <SLinkedInIcon />
+          <Link href='https://www.linkedin.com/in/jjw324' {...linkProperties}>
+            <Icon.LinkedIn />
           </Link>
-          <Link href='https://twitter.com/jwilliamson_dev' target='_blank' rel='noopener noreferrer'>
-            <STwitterIcon />
+          <Link href='https://twitter.com/jwilliamson_dev' {...linkProperties}>
+            <Icon.Twitter />
           </Link>
-        </Box>
-      </IBanner>
-    </OBanner>
+        </Grid>
+      </Banner.Inner>
+    </Banner.Outer>
   )
 }
 

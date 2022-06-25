@@ -16,7 +16,6 @@ const Main = styled(Box)`
   flex-flow: column;
   min-height: 100vh;
   max-width: 100vw;
-  text-align: center;
 `
 
 const Content = styled(Grid)`

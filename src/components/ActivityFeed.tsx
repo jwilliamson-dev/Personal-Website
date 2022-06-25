@@ -13,6 +13,7 @@ interface IActivityFeed {
 const AFBox = styled(Box)`
   text-align: left;
   background-color: #FFFFFF;
+  min-height: 100%;
 
   h2 {
     padding-left: 1rem;
@@ -56,7 +57,9 @@ const ActivityFeed: React.FC<IActivityFeed> = ({
   return (
     <AFBox>
       <Typ variant='h2'>{title}</Typ>
-      { items.map(x => <FeedItem {...generateIFeedItem(x)} key={(key++).toString()} />) }
+      { items.length > 0 ?
+        items.map(x => <FeedItem {...generateIFeedItem(x)} key={(key++).toString()} />) 
+        : <Typ variant='body1' p={2}>There is no activity to display at this time.</Typ>}
     </AFBox>
   )
 }

@@ -42,9 +42,9 @@ const Home: React.FC = (props: Props) => {
   
   return (
     <>
-      <Grid item sm={11} md={10} height='fit-content'>
+      <Grid item sm={11} md={10} height='fit-content' textAlign='center'>
         <Hello>Hi, I'm Jacob!</Hello>
-        <Typ variant='body2'>I enjoy using technology to make things happen</Typ>
+        <Typ variant='body2'>Using technology to automate and integrate</Typ>
       </Grid>
       <AFGrid item xs={10} md={5} lg={4}>
         <ActivityFeed title='My GitHub Feed' items={gitHubData} />
