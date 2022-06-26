@@ -1,12 +1,9 @@
-import React, { useState, useEffect, ReactElement } from 'react'
-import { Box, Grid, Link, Typography as Typ, styled } from '@mui/material'
-import EmailIcon from '@mui/icons-material/Email'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import TwitterIcon from '@mui/icons-material/Twitter'
+import React, { ReactElement } from 'react'
+import { Box, Grid, Typography as Typ } from '@mui/material'
 import { Document, Section } from 'types/Document'
-
-type Props = {}
+import usePageContent from 'hooks/usePageContent'
+import useContacts from 'hooks/useContacts'
+import ContactLink from 'components/ContactLink'
 
 type HLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
@@ -19,43 +16,13 @@ const levelToHeader = new Map<number, HLevel>([
   [6,'h6']
 ])
 
-const LeftTyp = styled(Typ)`
-  text-align: left;
-`
-
-const Contact = styled(Box)`
-  display: flex;
-  align-items: center;
-  padding-bottom: 0.5rem;
-`
-
-const ContactBar= styled(Box)`
-  display: flex;
-  justify-content: space-around;
-`
-
-const About: React.FC = (props: Props) => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [aboutData, setAboutData] = useState<Document | null>()
+const About: React.FC = () => {
+  const { 
+    content: aboutData, 
+    isLoading: isLoadingContent 
+  } = usePageContent('about')
+  const { contacts, isLoading: isLoadingContacts } = useContacts()
   let i = 0
-  
-  useEffect(() => {
-    const getAboutData = async () => {
-      setIsLoading(true)
-
-      try {
-        const res = await fetch('/data/about.json')
-        const jsonData: Document = await res.json()
-        setAboutData(jsonData)
-      } catch (error) {
-        console.error(error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-  
-    getAboutData()
-  }, [])
 
   const renderSection = (section: Section, level: number): ReactElement => {
     const hLevel = levelToHeader.get(level)
@@ -67,49 +34,44 @@ const About: React.FC = (props: Props) => {
     }
 
     if (section.type === 'list') {
-      thisSection = <ul>{section.content.map(x => <li id={(i++).toString()}>{x}</li>)}</ul>
+      thisSection = <ul>{section.content.map(x => <li>{x}</li>)}</ul>
     } else if (section.type === 'paragraph') {
-      thisSection = section.content.map(x => <LeftTyp variant='body2' id={(i++).toString()}>{x}</LeftTyp>)
+      thisSection = section.content.map(x => <Typ variant='body2' key={i++}>{x}</Typ>)
     }
 
     return (
-      <>
-        <LeftTyp variant={hLevel}>{section.heading}</LeftTyp>
+      <React.Fragment key={i++}>
+        <Typ variant={hLevel} key={i++}>{section.heading}</Typ>
         { thisSection }
         { subsections }
-      </>
+      </React.Fragment>
     )
   }
   
   return (
-    <>
-      <Grid item lg={9} md={10} xs={11}>
-        <ContactBar>
-          <Contact>
-            <EmailIcon fontSize='medium' /> &nbsp;
-            <Link color='inherit' href='mailto:me@jacobwilliamson.dev'>me@jacobwilliamson.dev</Link>
-          </Contact>
-          <Contact>
-            <GitHubIcon fontSize='medium' /> &nbsp;
-            <Link color='inherit' href='https://github.com/jwilliamson-dev' target='_blank' rel='noopener noreferrer'>jwilliamson-dev</Link>
-          </Contact>
-          <Contact>
-            <LinkedInIcon fontSize='medium' /> &nbsp;
-            <Link color='inherit' href='https://www.linkedin.com/in/jjw324/' target='_blank' rel='noopener noreferrer'>jwilliamson-dev</Link>
-          </Contact>
-          <Contact>
-            <TwitterIcon fontSize='medium' /> &nbsp;
-            <Link color='inherit' href='https://twitter.com/jwilliamson_dev' target='_blank' rel='noopener noreferrer'>@jwilliamson_dev</Link>
-          </Contact>
-        </ContactBar>
+    <Grid item lg={9} md={10} xs={11} textAlign='left'>
+      { (isLoadingContacts || isLoadingContent) ? (
+        <Typ variant='h1'>Loading Data...</Typ>
+      ) : (
+        <>
+          { contacts.length > 0 && (
+            <Box 
+              display='flex' 
+              alignItems='center' 
+              justifyContent='space-around'
+              pb={1}> 
+              { contacts.map(contact => <ContactLink key={i++} {...contact} useIcon />) }
+            </Box>
+          ) }
 
-        {aboutData ? (
-          aboutData.sections.map(section => renderSection(section, 1))
-        ) : (
-          <Typ variant='h1'>Loading Data...</Typ>
-        )}
-      </Grid>
-    </>
+          { aboutData ? (
+            aboutData.sections.map(section => renderSection(section, 1))
+          ) : (
+            <Typ variant='h1'>Error loading page content</Typ>
+          ) }
+        </>
+      ) }
+    </Grid>
   )
 }
 
