@@ -44,6 +44,6 @@ const FeedItem: React.FC<IFeedItem> = ({
   )
 }
 
-export { FeedItem }
+export default FeedItem 
 export type { IFeedItem }
 

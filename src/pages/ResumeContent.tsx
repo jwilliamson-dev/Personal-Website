@@ -1,9 +1,11 @@
 import React from 'react'
-import { Section } from 'types/Document'
-import Education from 'components/Education'
-import Experience from 'components/Experience'
-import Project from 'components/Project'
-import Skill from 'components/Skill'
+import { Section as TSection } from 'types'
+import { 
+  Education, 
+  Experience, 
+  Project,
+  Skill 
+} from 'components'
 import { 
   Grid, 
   Link, 
@@ -12,12 +14,12 @@ import {
 } from '@mui/material'
 
 type Props = {
-    header: Section,
-    education: Section,
-    experience: Section,
-    projects: Section,
-    skills: Section,
-    activities: Section
+    header: TSection,
+    education: TSection,
+    experience: TSection,
+    projects: TSection,
+    skills: TSection,
+    activities: TSection
 }
 
 const ResumeGrid = styled(Grid)`

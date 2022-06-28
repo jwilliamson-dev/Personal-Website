@@ -5,13 +5,13 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import { getLinkProps } from 'utils/navigation'
 import { Box, Link } from '@mui/material'
-import Contact from 'types/Contact'
+import { Contact as TContact } from 'types'
 
-interface IContact extends Contact {
+interface IContact extends TContact {
   useIcon?: boolean
 }
 
-const ContactLink: React.FC<IContact> = ({
+const Contact: React.FC<IContact> = ({
   service,
   url,
   username,
@@ -38,4 +38,4 @@ const ContactLink: React.FC<IContact> = ({
   )
 }
 
-export default ContactLink
+export default Contact
