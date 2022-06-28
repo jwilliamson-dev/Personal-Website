@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import moment from 'moment'
 import { openUrl } from 'utils/navigation'
 import { 

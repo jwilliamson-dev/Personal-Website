@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Typography as Typ } from '@mui/material'
-import { Document } from 'types/Document'
+import { Page } from 'types/Page'
 import ResumeContent from './ResumeContent'
 
-type Props = {}
-
-const Resume: React.FC = (props: Props) => {
+const Resume: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [resumeData, setResumeData] = useState<Document | null>()
+  const [resumeData, setResumeData] = useState<Page | null>()
   
   useEffect(() => {
     const getAboutData = async () => {
@@ -15,7 +13,7 @@ const Resume: React.FC = (props: Props) => {
 
       try {
         const res = await fetch('/data/resume.json')
-        const jsonData: Document = await res.json()
+        const jsonData: Page = await res.json()
         setResumeData(jsonData)
       } catch (error) {
         console.error(error)

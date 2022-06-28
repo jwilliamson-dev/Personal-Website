@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Box, Grid, styled } from '@mui/material'
 import Footer from './components/Footer'

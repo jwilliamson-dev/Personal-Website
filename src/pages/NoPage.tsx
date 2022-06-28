@@ -1,9 +1,6 @@
-import React from 'react'
 import { Typography as Typ, Link, Box } from '@mui/material'
 
-type Props = {}
-
-const NoPage: React.FC = (props: Props) => {
+const NoPage: React.FC = () => {
   return (
     <Box mt={3}>
       <Typ variant='h1'>Uh oh!</Typ>

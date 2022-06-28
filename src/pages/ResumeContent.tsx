@@ -1,4 +1,3 @@
-import React from 'react'
 import { Section as TSection } from 'types'
 import { 
   Education, 

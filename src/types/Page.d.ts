@@ -5,7 +5,7 @@ type Section = {
     subsections?: Array<Section>
 }
 
-type Document = {
+type Page = {
     title: string,
     createdAt?: Date,
     updatedAt?: Date,
@@ -13,4 +13,4 @@ type Document = {
     sections: Array<Section>
 }
 
-export { Document, Section }
+export { Page, Section }

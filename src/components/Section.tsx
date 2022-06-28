@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography as Typ } from '@mui/material'
 import { Section as TSection } from 'types'
 

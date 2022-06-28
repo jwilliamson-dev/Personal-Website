@@ -1,4 +1,3 @@
-import React from 'react'
 import * as Banner from 'styles/BannerStyles'
 import { 
   Button, 
@@ -8,10 +7,7 @@ import {
   useTheme 
 } from '@mui/material'
 
-
-type Props = {}
-
-const Header: React.FC = (props: Props) => {
+const Header: React.FC = () => {
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
 

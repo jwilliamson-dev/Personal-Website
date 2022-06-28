@@ -1,4 +1,3 @@
-import React from 'react'
 import * as Icon from 'styles/IconStyles'
 import * as Banner from 'styles/BannerStyles'
 import { 
@@ -9,9 +8,7 @@ import {
   useTheme 
 } from '@mui/material'
 
-type Props = {}
-
-const Footer: React.FC = (props: Props) => {
+const Footer: React.FC = () => {
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
   const linkProperties = { 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Project } from 'types'
 import { openUrl } from 'utils/navigation'
 import { 
@@ -13,9 +13,6 @@ import {
   useTheme, 
 } from '@mui/material'
 
-type Props = {}
-
-
 const ProjectCard = styled(Card)`
 height: 100%;
 display: flex;
@@ -23,7 +20,7 @@ flex-direction: column;
 justify-content: space-between;
 `
 
-const Projects: React.FC<Props> = (props: Props) => {
+const Projects: React.FC = () => {
   const [projectData, setProjectData] = useState<Project[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const theme = useTheme().palette

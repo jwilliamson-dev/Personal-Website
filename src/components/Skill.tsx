@@ -1,6 +1,5 @@
-import React from 'react'
 import { Grid, Typography as Typ } from '@mui/material'
-import { Section } from 'types/Document'
+import { Section } from 'types/Page'
 
 type Props = {
   data: Section

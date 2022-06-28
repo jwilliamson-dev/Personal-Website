@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Grid, Typography as Typ } from '@mui/material'
 import { ContactLink, Section } from 'components'
 import { useContacts, usePageContent } from 'hooks'

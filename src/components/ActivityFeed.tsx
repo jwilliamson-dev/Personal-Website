@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Typography as Typ, Link, styled } from '@mui/material'
 import FeedItem,  { IFeedItem } from './FeedItem'
 import { GitHubActivity } from 'types'

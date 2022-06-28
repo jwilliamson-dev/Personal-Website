@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Grid, Typography as Typ } from '@mui/material'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import { styled } from '@mui/material'
 import ActivityFeed from 'components/ActivityFeed'
 import { GitHubActivity } from 'types'
-
-type Props = {}
 
 const AFGrid = styled(Grid)`
   max-height: 65vh;
@@ -18,8 +16,8 @@ const Hello = styled(Typ)`
   font-weight: 300;
 `
 
-const Home: React.FC = (props: Props) => {
-  const [isLoading, setIsLoading] = useState(false)
+const Home: React.FC = () => {
+  const setIsLoading = useState(false)[1]
   const [gitHubData, setGitHubData] = useState<Array<GitHubActivity>>([])
   
   useEffect(() => {

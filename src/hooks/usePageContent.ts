@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Document } from 'types/Document'
+import { Page } from 'types/Page'
 
 type PageConent = {
-  content: Document | null,
+  content: Page | null,
   isLoading: boolean
 }
 
 const usePageContent = (path: string): PageConent => {
-  const [content, setContent] = useState<Document | null>(null)
+  const [content, setContent] = useState<Page | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   
   useEffect(() => {
@@ -16,7 +16,7 @@ const usePageContent = (path: string): PageConent => {
 
       try {
         const res = await fetch(`/data/${path}.json`)
-        const jsonData: Document = await res.json()
+        const jsonData: Page = await res.json()
         setContent(jsonData)
       } catch (error) {
         console.error(error)
