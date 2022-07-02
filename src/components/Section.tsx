@@ -42,20 +42,32 @@ const Section: React.FC<ISection> = ({
       { underlineHeader && <hr /> }
 
       { type === 'paragraph' ? (
-        content.map(paragraph => <Typ variant='body2' key={key++}>{paragraph}</Typ>)
+        <>
+          { content.map(paragraph => <Typ variant='body2' key={key++}>{paragraph}</Typ>) }
+          { subsections && subsections.map(section =>
+            <Section 
+              {...section} 
+              startAtLevel={level+1} 
+              underlineHeader={underlineSubHeadings} 
+              underlineSubHeadings={underlineSubHeadings}/>
+          ) }
+        </>
+        
       ) : (
         <ul>
           { content.map(item => <li key={key++}>{item}</li>) }
+          { subsections && subsections.map(section =>
+            <Section 
+              {...section} 
+              startAtLevel={level+1} 
+              underlineHeader={underlineSubHeadings} 
+              underlineSubHeadings={underlineSubHeadings}
+              key={key++}/>
+          ) }
         </ul>
       ) }
       
-      { subsections && subsections.map(section =>
-        <Section 
-          {...section} 
-          startAtLevel={level+1} 
-          underlineHeader={underlineSubHeadings} 
-          underlineSubHeadings={underlineSubHeadings}/>
-      ) }
+      
     </>
   )
 }
