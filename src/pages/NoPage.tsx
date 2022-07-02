@@ -1,4 +1,4 @@
-import { Typography as Typ, Link, Box } from '@mui/material'
+import { Box, Link, Typography as Typ } from '@mui/material'
 
 const NoPage: React.FC = () => {
   return (

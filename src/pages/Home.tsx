@@ -1,4 +1,4 @@
-import { Grid, Typography as Typ } from '@mui/material'
+import { Grid, GridProps, Typography as Typ } from '@mui/material'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import { GitHubActivity } from 'types'
 import ActivityFeed from 'components/ActivityFeed'
@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     isLoading
   } = useLocalData<GitHubActivity[]>('githubactivity.json')
 
-  const activityFeedProps = {
+  const activityFeedProps: GridProps = {
     item: true,
     xs: 10,
     md: 5,
