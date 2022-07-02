@@ -1,49 +1,57 @@
 # PersonalSite
-My personal website formulated as a React application using TypeScript
 
-# Getting Started with Create React App
+My personal website formulated as a React application using TypeScript.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Latest release is hosted on [jacobwilliamson.dev](https://www.jacobwilliamson.dev)
 
-## Available Scripts
+## How to Run
 
-In the project directory, you can run:
+This project was bootstrapped with create-react-app, and follows the same steps as any other create-react-app application.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Node
+* NPM
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Instructions
 
-### `npm test`
+1. Clone the repository
+2. Open a terminal in the repository's directory
+3. Run `npm i`
+4. Run `npm start` to run a development server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you'd like to build the production code, run `npm run build` and then you can run `serve -s build` to serve the code locally.
 
-### `npm run build`
+## How to Host
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I host my website on Azure using the Azure Storage static website hosting feature. [Scott Hanselman](https://hanselman.com) has a [great tutorial](https://www.youtube.com/watch?v=G_gDYlRBAZw) on how to do this. You'll need to do some extra configuration to get the routing to work properly. I recommend following [this guide](https://antbutcher.medium.com/hosting-a-react-js-app-on-azure-blob-storage-azure-cdn-for-ssl-and-routing-8fdf4a48feeb) by Anthony Butcher.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+There are 2 main components to the website. Website content is located in public/data and the React app is located in src.
 
-### `npm run eject`
+### Website Content
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The following files are required in the public/data folder:
+* about.json
+* contacts.json
+* githubactivity.json
+* projects.json
+* resume.json
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### React App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The React app takes a functional component approach and uses TypeScript for strict type checking. Components are provided by the [Material UI](https://mui.com) component library. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The React code is split into different folders based on the role of the files. The folders are:
+* components - for reusable React components
+* hooks - for hooks, mainly ones that fetch external data
+* styles - for themes and other special styles
+* types - for typescript definitions
+* utils - other functions that are used across components that aren't components themselves
 
-## Learn More
+## Coding Style
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Coding style is enforced by ESLint, and the specific rules can be found in .eslintrc.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Simple styling is applied through the MUI componen's props. When more complex styling is required (e.g., applying many styles or using psuedoselectors), using MUI's `styled` API is used.
