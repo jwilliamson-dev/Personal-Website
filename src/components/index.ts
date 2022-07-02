@@ -1,4 +1,3 @@
-export { default as ActivityFeed } from './ActivityFeed'
 export { default as ContactLink } from './Contact'
 export { default as Experience } from './Experience'
 export { default as FeedItem } from './FeedItem'

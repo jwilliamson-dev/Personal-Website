@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactNode } from 'react'
 import moment from 'moment'
 import { openUrl } from 'utils/navigation'
 import { 
@@ -10,9 +10,9 @@ import {
 
 interface IFeedItem {
   title: string,
-  description: ReactElement,
   date: Date,
-  url: string
+  url: string,
+  children?: ReactNode
 }
 
 const AFCardActionArea  = styled(CardActionArea)`
@@ -27,9 +27,9 @@ const AFTyp = styled(Typ)`
 
 const FeedItem: React.FC<IFeedItem> = ({
   title,
-  description,
   date,
-  url
+  url,
+  children
 }) => {
   const formatDate = (d: Date): string => moment(d).format('MMM Do, YYYY [at] h:mm a')
 
@@ -37,7 +37,7 @@ const FeedItem: React.FC<IFeedItem> = ({
     <Card sx={{borderRadius: 0}}>
       <AFCardActionArea onClick={e => openUrl(e, url)}>
         <AFTyp variant='h5'>{title}</AFTyp>
-        {description}
+        {children}
         <AFTyp variant='body1'>{formatDate(date)}</AFTyp>
       </AFCardActionArea>
     </Card>

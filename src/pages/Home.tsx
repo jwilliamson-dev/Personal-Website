@@ -1,8 +1,21 @@
-import { Grid, GridProps, Typography as Typ } from '@mui/material'
+import { Box, Grid, GridProps, Typography as Typ, styled } from '@mui/material'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 import { GitHubActivity } from 'types'
-import ActivityFeed from 'components/ActivityFeed'
+import FeedItem from 'components/FeedItem'
 import useLocalData from 'hooks/useLocalData'
+import gitHubTransformer from 'utils/gitHubTransformer'
+
+const AFBox = styled(Box)`
+  text-align: left;
+  background-color: #FFFFFF;
+  min-height: 100%;
+
+  h2 {
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+`
 
 const Home: React.FC = () => {
   const {
@@ -19,6 +32,8 @@ const Home: React.FC = () => {
     overflow: 'auto',
     mb: 1
   }
+
+  let key = 0
   
   return (
     <>
@@ -37,7 +52,12 @@ const Home: React.FC = () => {
           <Typ variant='h1'>Loading Data...</Typ>
         ) : (
           gitHubData &&
-            <ActivityFeed title='My GitHub Feed' items={gitHubData} />
+          <AFBox>
+            <Typ variant='h2'>My GitHub Feed</Typ>
+            { gitHubData.length > 0 ?
+              gitHubData.map(item => <FeedItem {...gitHubTransformer(item)} key={key++} />) 
+              : <Typ variant='body1' p={2}>There is no activity to display at this time.</Typ>}
+          </AFBox>
         ) }
       </Grid>
 
