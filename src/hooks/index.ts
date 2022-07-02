@@ -1,2 +1,1 @@
-export { default as useContacts } from './useContacts'
-export { default as usePageContent } from './usePageContent'
+export { default as useLocalData } from './useLocalData'

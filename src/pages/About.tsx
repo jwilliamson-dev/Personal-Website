@@ -1,17 +1,18 @@
 import { Box, Grid, Typography as Typ } from '@mui/material'
 import { ContactLink, Section } from 'components'
-import { useContacts, usePageContent } from 'hooks'
+import { Page, Contact } from 'types'
+import useLocalData from 'hooks/useLocalData'
 
 const About: React.FC = () => {
   const { 
-    content: aboutData, 
+    data: aboutData, 
     isLoading: isLoadingContent 
-  } = usePageContent('about')
+  } = useLocalData<Page>('about.json')
   
   const { 
-    contacts, 
+    data: contacts, 
     isLoading: isLoadingContacts 
-  } = useContacts()
+  } = useLocalData<Contact[]>('contacts.json')
   
   let key = 0
   
@@ -21,7 +22,7 @@ const About: React.FC = () => {
         <Typ variant='h1'>Loading Data...</Typ>
       ) : (
         <>
-          { contacts.length > 0 && (
+          { contacts && contacts.length > 0 && (
             <Box 
               display='flex' 
               alignItems='center' 
