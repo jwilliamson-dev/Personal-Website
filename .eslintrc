@@ -1,13 +1,28 @@
 {
     "parser": "@typescript-eslint/parser",
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react",
+        "jsx-a11y"
     ],
-    "env": { "browser": true },
-    "extends": ["eslint:recommended"],
+    "env": { 
+      "browser": true,
+      "jest": true
+     },
+    "extends": [
+      "eslint:recommended", 
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
     "globals": {
       "React": "readonly",
       "JSX": "readonly"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
     },
     "rules": {
         "semi": [
@@ -27,7 +42,7 @@
         "no-console": [
           "error", 
           { "allow": ["warn", "error"] }
-        ]
-
+        ],
+        "react/prop-types": 0
     }
 }

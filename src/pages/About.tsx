@@ -33,7 +33,7 @@ const About: React.FC = () => {
           ) }
 
           { aboutData ? (
-            aboutData.sections.map(section => <Section {...section} />)
+            aboutData.sections.map(section => <Section key={key++} {...section} />)
           ) : (
             <Typ variant='h1'>Error loading page content</Typ>
           ) }

@@ -43,7 +43,7 @@ const Home: React.FC = () => {
         md={10} 
         height='fit-content' 
         textAlign='center'>
-        <Typ fontWeight={300} fontSize='3.5rem'>Hi, I'm Jacob!</Typ>
+        <Typ fontWeight={300} fontSize='3.5rem'>Hi, I&apos;m Jacob!</Typ>
         <Typ variant='body2'>Using technology to automate and integrate</Typ>
       </Grid>
 

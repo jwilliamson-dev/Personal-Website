@@ -46,6 +46,7 @@ const Section: React.FC<ISection> = ({
           { content.map(paragraph => <Typ variant='body2' key={key++}>{paragraph}</Typ>) }
           { subsections && subsections.map(section =>
             <Section 
+              key={key++}
               {...section} 
               startAtLevel={level+1} 
               underlineHeader={underlineSubHeadings} 
