@@ -1,6 +1,6 @@
 import { Box, Grid, GridProps, Typography as Typ, styled } from '@mui/material'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
-import { GitHubActivity } from 'types'
+import { GithubEvent } from 'types/GitHubEvents'
 import FeedItem from 'components/FeedItem'
 import useLocalData from 'hooks/useLocalData'
 import gitHubTransformer from 'utils/gitHubTransformer'
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   const {
     data: gitHubData,
     isLoading
-  } = useLocalData<GitHubActivity[]>('githubactivity.json')
+  } = useLocalData<GithubEvent[]>('githubactivity.json')
 
   const activityFeedProps: GridProps = {
     item: true,
@@ -32,6 +32,8 @@ const Home: React.FC = () => {
     overflow: 'auto',
     mb: 1
   }
+
+  console.warn(gitHubData)
 
   let key = 0
   

@@ -1,12 +1,12 @@
 import { IFeedItem } from 'components/FeedItem'
-import { GitHubActivity } from 'types'
 import { openUrl } from 'utils/navigation'
+import { GithubEvent } from 'types/GitHubEvents'
 import { Link, Typography as Typ } from '@mui/material'
 
-const gitHubTransformer = (item: GitHubActivity): IFeedItem => {
+const gitHubTransformer = (item: GithubEvent): IFeedItem => {
   let key = 0
 
-  const description = 
+  const description = item.type === 'PushEvent' &&
   <>
     <Typ variant='h6'>Added {item.payload.size} commits</Typ>
     <ul>
