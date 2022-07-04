@@ -3,7 +3,7 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import { getLinkProps } from 'utils/navigation'
-import { Box, Link } from '@mui/material'
+import { Grid, Link } from '@mui/material'
 import { Contact as TContact } from 'types'
 
 interface IContact extends TContact {
@@ -30,10 +30,10 @@ const Contact: React.FC<IContact> = ({
   }
 
   return (
-    <Box display='flex' alignItems='center'>
+    <Grid item xs={12} sm={6} md={3} display='flex' alignItems='center' justifyContent='center'>
       { useIcon && getIcon(service) }
       <Link {...getLinkProps(url, 'inherit')}>{username}</Link>
-    </Box>
+    </Grid>
   )
 }
 

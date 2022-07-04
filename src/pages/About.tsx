@@ -1,4 +1,4 @@
-import { Box, Grid, Typography as Typ } from '@mui/material'
+import { Grid, Typography as Typ } from '@mui/material'
 import { ContactLink, Section } from 'components'
 import { Page, Contact } from 'types'
 import useLocalData from 'hooks/useLocalData'
@@ -23,13 +23,12 @@ const About: React.FC = () => {
       ) : (
         <>
           { contacts && contacts.length > 0 && (
-            <Box 
-              display='flex' 
+            <Grid container
               alignItems='center' 
               justifyContent='space-around'
               pb={1}> 
               { contacts.map(contact => <ContactLink key={key++} {...contact} useIcon />) }
-            </Box>
+            </Grid>
           ) }
 
           { aboutData ? (
