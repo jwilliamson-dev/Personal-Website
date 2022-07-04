@@ -1,5 +1,5 @@
 const openUrl = (event: React.MouseEvent, url: string | URL) => {
-  event.preventDefault()
+  event.stopPropagation()
   window.open(url, '_blank', 'noopener,noreferrer')
 }
 
