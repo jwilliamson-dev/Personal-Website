@@ -1,0 +1,50 @@
+{
+  "name": "jobs",
+  "version": "1.0.0",
+  "description": "Data feeds for personal website",
+  "scripts": {
+    "azure": "node dist/index.mjs azure",
+    "build": "pkgroll --clean-dist",
+    "format": "prettier ./src --check",
+    "format:fix": "prettier ./src --write",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "local": "node dist/index.mjs local"
+  },
+  "main": "./dist/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwilliamson-dev/WebsiteWorkers.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwilliamson-dev/WebsiteWorkers/issues"
+  },
+  "homepage": "https://github.com/jwilliamson-dev/WebsiteWorkers#readme",
+  "dependencies": {
+    "@azure/identity": "^4.5.0",
+    "@azure/storage-blob": "^12.26.0",
+    "@octokit/rest": "^21.0.2",
+    "@types/selenium-webdriver": "^4.1.27",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "selenium-webdriver": "^4.26.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
+    "@octokit/types": "^13.6.1",
+    "@types/node": "^22.9.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^15.14.0",
+    "pkgroll": "^2.5.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0"
+  },
+  "type": "module"
+}

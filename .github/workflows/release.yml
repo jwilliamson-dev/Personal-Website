@@ -8,24 +8,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 🔽 Download artifact
-      uses: dawidd6/action-download-artifact@v2
-      with:
-        workflow: main.yml
-        workflow_conclusion: success
-    
-    - name: 🔑 Azure login
-      uses: azure/login@v1
-      with:
+      - name: 🔽 Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: production-files
+
+      - name: 🔑 Azure login
+        uses: azure/login@v2
+        with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: 🔼 Upload to Azure blob storage
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.30.0
-        inlineScript: |
+
+      - name: 🔼 Upload to Azure blob storage
+        uses: azure/CLI@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
             az storage blob upload-batch --account-name jwilliamsondev -d '$web' -s ./production-files
-    
-    - name: 🔒 Azure logout
-      run: |
-            az logout
+
+      - name: 🔒 Azure logout
+        run: |
+          az logout
