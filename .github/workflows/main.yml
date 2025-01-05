@@ -12,6 +12,9 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
+    defaults:
+      run:
+        working-directory: ./app
 
     steps:
       - name: ✅ Checkout Repository
@@ -21,9 +24,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: 📁 Navigate to the web directory
-        run: cd web
 
       - name: 📦 Install Dependencies
         run: npm install
