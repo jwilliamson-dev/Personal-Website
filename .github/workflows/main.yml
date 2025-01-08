@@ -1,42 +1,38 @@
 name: Main Pipeline
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    strategy: 
+
+    strategy:
       matrix:
-        node-version: [16.x]
-    
+        node-version: [22.x]
+    defaults:
+      run:
+        working-directory: ./web
+
     steps:
-    - name: ✅ Checkout Repository
-      uses: actions/checkout@v3
+      - name: ✅ Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: 🏗️ Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    
-    - name: 📦 Install Dependencies
-      run: npm install
+      - name: 🏗️ Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: 🔎 Run ESLint
-      run: npm run lint
+      - name: 📦 Install Dependencies
+        run: npm install
 
-    - name: 🧪 Run Tests
-      run: npm test
+      - name: ✨ Run Prettier
+        run: npm run format
 
-    - name: ⚒️ Build
-      run: npm run build
+      - name: 🔎 Run ESLint
+        run: npm run lint
 
-    - name: 🔼 Upload production-ready build files
-      if: ${{ github.event_name == 'push' }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: production-files
-        path: ./build
+      - name: ⚒️ Build
+        run: npm run build

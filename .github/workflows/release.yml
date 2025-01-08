@@ -4,28 +4,43 @@ on:
     types: [published]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [22.x]
+    defaults:
+      run:
+        working-directory: ./web
+
     steps:
-    - name: 🔽 Download artifact
-      uses: dawidd6/action-download-artifact@v2
-      with:
-        workflow: main.yml
-        workflow_conclusion: success
-    
-    - name: 🔑 Azure login
-      uses: azure/login@v1
-      with:
+      - name: ✅ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: ⚒️ Build
+        run: npm run build
+
+      - name: 🔑 Azure login
+        uses: azure/login@v2
+        with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: 🔼 Upload to Azure blob storage
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.30.0
-        inlineScript: |
-            az storage blob upload-batch --account-name jwilliamsondev -d '$web' -s ./production-files
-    
-    - name: 🔒 Azure logout
-      run: |
-            az logout
+
+      - name: 🔼 Upload to Azure blob storage
+        uses: azure/CLI@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az storage blob upload-batch --overwrite true --account-name jwilliamsondev -d '$web' -s web/dist
+
+      - name: 🔒 Azure logout
+        run: |
+          az logout
