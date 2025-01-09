@@ -41,6 +41,12 @@ CHROME_USER_DATA=
 
 # Your LinkedIn username as seen in your profile URL. E.g., https://linkedin.com/in/YOUR_USERNAME
 LINKEDIN_USERNAME=
+
+# Your Azure Storage account key
+AZURE_ACCOUNT_KEY=
+
+# Your Azure Storage account name
+AZURE_STORAGE_ACCOUNT_NAME=
 ```
 
 ### local_data/local_data.json

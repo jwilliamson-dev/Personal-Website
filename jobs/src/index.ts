@@ -97,7 +97,7 @@ const uploadToAzure = async () => {
       process.env['AZURE_STORAGE_ACCOUNT_NAME']
     )
   ) {
-    return
+    throw new Error('Missing environment variables')
   }
 
   const key = process.env['AZURE_ACCOUNT_KEY']
@@ -122,6 +122,9 @@ const uploadDirectory = async (dirPath: string, container: ContainerClient) => {
       await uploadDirectory(filePath, container)
     } else {
       const blobClient = container.getBlockBlobClient(filePath)
+
+      console.log(`Uploading ${filePath}`)
+
       await blobClient.uploadFile(filePath, {
         blobHTTPHeaders: {
           blobContentType:
